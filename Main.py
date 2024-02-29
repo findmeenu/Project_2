@@ -1,3 +1,9 @@
+Ahmed ! Let's include coin tossing to decide who will play first.
+#if head appears then player one and tail then player 2.
+Both the one-die (Neller and Presser11) and the two-dice (Zhu and Ma13) sequential Pig games have 
+indicated that the player who plays first has certain advantage in term of the winning probability. 
+The sequential setting is unfair to those played at the end of the playing queue, especially when the number of players increases.
+
    
 import player
 import player1
@@ -24,6 +30,8 @@ while new_player:
 check players_list
 
 
+# for name change
+orig_name = input("Please Enter exisiting name: ")
 # check for name in players list. if already existing then , dis msg select another name as name already taken.
 
 
