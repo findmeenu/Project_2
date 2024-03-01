@@ -57,3 +57,47 @@ Player_2 = input("Enter your Player 2: ")
 
 play = player1.Player1(Player_1)
 play = player1.Player1(Player_2)
+
+
+
+
+
+
+
+
+
+    while new_or_existing_player :
+#                         sub_menu_1()  # New or existing player ?
+#                         option_2 = int(input("Enter your choice: "))
+                        
+#                         if 1 <= option_2 <=2:
+#                             new_or_existing_player = True     
+                                          
+#                         elif option_2 == 1:
+#                             new_player = True
+#                             while new_player:
+#                                 new_name = input ("Enter name: ") #New Player
+#                                 if player.create_player(new_name):
+#                                     new_player = True
+#                                 else :
+#                                     new_player = False
+#                                     print ("Let's the Fun Begin ! ")
+#                                     start.game()
+# #create player instance and start playing the game. 
+                        
+#                         elif option_2 == 2:
+#                             existing_player = True
+#                             while existing_player :
+#                                 old_name = input("Provide Player Name: ")
+#                                 if player.search_player (old_name) :
+#                                     existing_player = True
+#                                 else:
+#                                     existing_player = False
+#                                     print ("Let's the Fun Begin ! ")
+#                                     game.start.game()
+
+# #create player instance and start playing the game. 
+#                         elif option_2 == 3:
+#                             new_or_existing_player = False
+#                             play = True
+                  

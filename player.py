@@ -3,10 +3,9 @@ import sys
 import random
 
 class Player :
-    
-    
-   
-    #write data to file & load it from file everytime"
+ 
+ 
+ # write data to file & load it from file everytime"
     def __init__(self, name) :
         self.__name = name
         self.__players = []
@@ -16,14 +15,6 @@ class Player :
         
     #pickle the list of players#
     
-    def save_players_list (self, filename):
-        with open(filename, 'a+') as file :
-            pickle.dump(self.__players, file)
-    
-    def load_players_list (self, filename):
-        with open(filename, 'rb') as file :
-            self.__players = pickle.load(file)
-            
         
         
         # To create new Player
@@ -33,17 +24,17 @@ class Player :
     def create_player (self, p_name):
         if p_name in self.__players :
             print ("Name already taken. Please select another name.")
-            return False  # Indicate that name is already taken
+            return True  # Indicate that name is already taken
         else:
             self.__players.append(p_name)
             print ("Player created.")
-            return True   # Indicate that name is available & player created.
+            return False   # Indicate that name is available & player created.
             
     def search_player (self, p_name):       
-        if p_name in self.__players :
+        if p_name not in self.__players :
+            print("Please enter correct name.")
             return True  
         else:
-            print("Please enter correct name.")
             return False   # Indicate that name is available # print("Enter correct name: ")
         
     
@@ -74,10 +65,10 @@ class Player :
         total=0
         if roll_dice_num !=1: 
             total += roll_dice_num
-            self.score += total
-            return self.score
+            self.__score += total
+            return self.__score
         else :
-            return self.score
+            return self.__score
         
         
     def __str__(self):
