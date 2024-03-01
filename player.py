@@ -10,17 +10,16 @@ class Player :
         self.__name = name
         self.__players = []
         self.__score = 0
-        #self.player_ID = self.generate_ID 
-        #self.__playerID = playerID
-        
-    #pickle the list of players#
+        self.__filename = 'players.bin'
     
-        
-        
-        # To create new Player
-        #no_of_players == len(players_dct)
-        #players_dct [name] = (no_of_players + 1)
-    
+    def save_players_list(self):
+        with open(self.__filename, 'a+b') as file: 
+            pickle.dump(self.__players, file)
+
+    def load_players_list(self):
+        with open(self.__filename, 'rb') as file:  
+            self.__players == pickle.load(file)
+
     def create_player (self, p_name):
         if p_name in self.__players :
             print ("Name already taken. Please select another name.")
@@ -30,20 +29,13 @@ class Player :
             print ("Player created.")
             return False   # Indicate that name is available & player created.
             
-    def search_player (self, p_name):       
+    def search_player(self, p_name):       
         if p_name not in self.__players :
             print("Please enter correct name.")
             return True  
         else:
             return False   # Indicate that name is available # print("Enter correct name: ")
-        
-    
-        #list_players['']
-        #file 1 = sys.*args[1]
-    
-            
-    def print_name(self):
-        print (self.__name, self.__playerID)
+                 
         
     def change_name (self, orig_name, new_name):
         if orig_name in self.__players and new_name not in self.__players:
@@ -57,7 +49,8 @@ class Player :
             
             
     def play (self, ):
-        
+        print ("Press Enter to roll.")
+        print ("k")
         pass
         
         

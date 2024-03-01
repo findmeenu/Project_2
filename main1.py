@@ -1,10 +1,15 @@
-import time
-import os
+
+import game
 import player
+import dice
+import history
 
 def main1():
+    player.load_players_list()
+    pig_game = game.Game()
+    pig_game.game_rules()
 #___________________________________________________________MAIN MENU_______________________________________________________________     
-   
+    
     keep_running = True  # To start the main menu.
     while keep_running:
         main_menu()     
@@ -12,9 +17,9 @@ def main1():
         
 #____________________________________MAIN MENU - BAD INPUT Check _______________________________________________________________________________
         
-        if 1 <= choice <=5 :
+        if 1 <= choice <=6 :
             print ("Invalid input. Please enter a number (1-5).")
-            keep_running = True  
+             
 #____________________________________MAIN MENU SELECTED : 1. PLAY_________________________________________________________________               
 #  ------------------------------- # To start sub menu single or multiplayer mode.-------------------------------------------------------      
         elif choice == 1:                                   
@@ -31,13 +36,32 @@ def main1():
                      
                 if 1 <= option_1 <=3:
                     print ("Invalid input. Please enter a number (1-3).")
-                    play = True
+                    
  #  ------------------------------- # To start sub menu single mode.-------------------------------------------------------      
  #---------------------------------------------------------------------------------------------------------------------------       
                       
                 elif option_1 == 1 :                                #Single player mode ON
-                    if sub_menu_1_execute() == 'Start':
-                        print ("Let's the Fun Begin ! ")
+                    a,b = sub_menu_1_execute()
+                    if  b == 'Start':
+                        
+                        level = True
+                        while level:
+                            print ("Let's the Fun Begin ! ")
+                            print("You would be facing Mr. Robot.")
+                            print("Select the difficulty level of Mr. Robot. ")
+                            print("1. EASY "/n"2. NORMAL"/n"3. HARD")
+                            difficulty_level_choice = input("Enter your choice: ")
+                            if 1 <= choice <=3 :
+                                print ("Invalid input. Please enter a number (1-3).")
+                            else:
+                                level = False    
+
+                        p1 = player.Player(a)
+                        mr_robot = computer.Computer()
+                        z = pig_game.roll_first(p1, mr_robot)
+                        if z == p1:
+                            p1.roll_
+                        my_player.play
                         game.start.game()
                     else:
                         play = True    
@@ -63,49 +87,51 @@ def main1():
                         
                 elif option_1 == 3:
                     play = False
-                    keep_running = True     
+                        
 ##---------------------------------- # Exit Sub menu-------------------------------------------------------------------------------------      
 #____________________________________MAIN MENU SELECTED : 2. SHOW HISTORY _________________________________________________________________               
 
 
         elif choice == 2:
-            pass
+            
+            statistics.print_stats(statistics.load_players_list())
+            
 #____________________________________MAIN MENU SELECTED : 3. RULES _________________________________________________________________               
 
         elif choice == 3:
-            game_rules ()
+            pig_game.game_rules ()
+           
 #___________________________________MAIN MENU SELECTED : 4. RESTART _________________________________________________________________               
 
         elif choice == 4:
             pass
+#____________________________________MAIN MENU SELECTED : 5. CHANGE NAME _________________________________________________________________               
 
-#____________________________________MAIN MENU SELECTED : 5. QUIT _________________________________________________________________               
         elif choice == 5:
+            existing_name = input("Enter exisitng name: ")
+            change_name = input("Enter the desired name: ")
+            
+            my_player.change_name(existing_name, change_name)
+            choice == 5
+        
+#____________________________________MAIN MENU SELECTED : 6. QUIT _________________________________________________________________               
+        elif choice == 6:
+            my_player.save_players_list()
+            
             keep_running = False
         
-           
+if __name__ == "__main1__":
+    main()           
             
-def game_rules(): 
-    
-    print("WELCOME ! \n")
-    print("PIG : DICE GAME \n" )
-    print("The Game Rules: \n") 
-    print("Each turn, a player repeatedly rolls a die until either a 1 is rolled or the player decides to \"hold\": \n" ) 
-    print("-> If the player rolls a 1, they score nothing and it becomes the next player's turn.")
-    print("-> If the player rolls any other number, it is added to their turn total and the player's turn continues.")
-    print("-> If a player chooses to \"hold\", their turn total is added to their score, and it becomes the next player's turn. \n")
-    print("The first player to score 100 or more points wins.")
-    
-    time.sleep(5)
-    os.system("cls")
 
 def main_menu():
-                
+    print("-------Dice Game--------")            
     print("1. Play")
     print("2. Show History")
     print("3. Rules")
-    print("4. Restart")
-    print("5. Quit")
+    print("4. Restart")    
+    print("5. Change Name")
+    print("6. Quit")
     print()        
     
     
@@ -122,29 +148,29 @@ def sub_menu_1_execute():
         sub_menu_1()                                    # New or existing player ?
         option_2 = int(input("Enter your choice (1-3): "))
         
-        if 1 <= option_2 <=2:
-            new_or_existing_player = True     
+        if 1 <= option_2 <=3:
+            print ("Invalid input. Please enter a number (1-3).")     
                             
         elif option_2 == 1:
             new_player = True
             while new_player:
                 new_name = input ("Enter name to create Player: ")                   #New Player
-                if player.create_player(new_name):
+                if my_player.create_player(new_name):
                     new_player = True
                 else :
                     new_player = False
-                    return 'Start'
+                    return new_player, 'Start'
 #create player instance and start playing the game. 
 
         elif option_2 == 2:
             existing_player = True
             while existing_player :
                 old_name = input("Provide Player Name: ")                   #Exisiting player
-                if player.search_player (old_name) :
+                if my_player.search_player(old_name) :
                     existing_player = True
                 else:
                     existing_player = False
-                    return 'Start'
+                    return old_name, 'Start'
 
 #create player instance and start playing the game. 
         elif option_2 == 3:
