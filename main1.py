@@ -5,7 +5,9 @@ import dice
 import history
 
 def main1():
-    player.load_players_list()
+    my_player = user.User()
+    my_player.load_players_list()
+    
     my_dice = dice.Dice()
     pig_game = game.Game()
     
@@ -120,14 +122,12 @@ def main1():
         elif choice == 5:
             existing_name = input("Enter exisitng name: ")
             change_name = input("Enter the desired name: ")
-            
             my_player.change_name(existing_name, change_name)
             choice == 5
         
 #____________________________________MAIN MENU SELECTED : 6. QUIT _________________________________________________________________               
         elif choice == 6:
             my_player.save_players_list()
-            
             keep_running = False
         
 if __name__ == "__main1__":
