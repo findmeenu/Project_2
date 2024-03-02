@@ -6,7 +6,9 @@ import history
 
 def main1():
     player.load_players_list()
+    my_dice = dice.Dice()
     pig_game = game.Game()
+    
     pig_game.game_rules()
 #___________________________________________________________MAIN MENU_______________________________________________________________     
     
@@ -17,7 +19,7 @@ def main1():
         
 #____________________________________MAIN MENU - BAD INPUT Check _______________________________________________________________________________
         
-        if 1 <= choice <=6 :
+        if 1 < choice < 6 :
             print ("Invalid input. Please enter a number (1-5).")
              
 #____________________________________MAIN MENU SELECTED : 1. PLAY_________________________________________________________________               
@@ -34,7 +36,7 @@ def main1():
  # ------------------------------- # To check bad data for sub menu single or multiplayer mode.-------------------------------------------------------      
  #---------------------------------------------------------------------------------------------------------------------------       
                      
-                if 1 <= option_1 <=3:
+                if 1 < option_1 < 3:   # bad data check
                     print ("Invalid input. Please enter a number (1-3).")
                     
  #  ------------------------------- # To start sub menu single mode.-------------------------------------------------------      
@@ -46,20 +48,28 @@ def main1():
                         
                         level = True
                         while level:
-                            print ("Let's the Fun Begin ! ")
                             print("You would be facing Mr. Robot.")
                             print("Select the difficulty level of Mr. Robot. ")
-                            print("1. EASY "/n"2. NORMAL"/n"3. HARD")
-                            difficulty_level_choice = input("Enter your choice: ")
-                            if 1 <= choice <=3 :
-                                print ("Invalid input. Please enter a number (1-3).")
-                            else:
-                                level = False    
-
+                            print("1. EASY /n2. NORMAL/n3. HARD")
+                            difficulty_level = int(input("Enter your choice: "))
+                            if 1 < difficulty_level < 3:
+                                print("Invalid input. Please enter a number (1-3).")
+                            elif difficulty_level == 1:
+                                level = False
+                                print("Let's begin Fun!")    
+##missing mistery
+                        
+                        #game start 
                         p1 = player.Player(a)
                         mr_robot = computer.Computer()
+                        
                         z = pig_game.roll_first(p1, mr_robot)
+                        
+                        p1.set
                         if z == p1:
+                            num = my_dice.roll()
+                            total score for p1 = p1.score(num)
+                            #write from here.
                             p1.roll_
                         my_player.play
                         game.start.game()
@@ -148,7 +158,7 @@ def sub_menu_1_execute():
         sub_menu_1()                                    # New or existing player ?
         option_2 = int(input("Enter your choice (1-3): "))
         
-        if 1 <= option_2 <=3:
+        if 1 < option_2 <3:
             print ("Invalid input. Please enter a number (1-3).")     
                             
         elif option_2 == 1:
