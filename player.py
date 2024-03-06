@@ -3,7 +3,7 @@ class Player:
     def __init__(self, name):
         self.name = name 
         self.score = 0
-        self.target = 100
+        self.tempscore = 0
         self.filename = 'players.txt'
         self.wins = 0 
         self.loss = 0 
@@ -11,19 +11,15 @@ class Player:
               
     def score1(self, roll_dice_num):
                 
-        if roll_dice_num == 1:
-            self.score += 0
-            
-            print(f"Check player method {self.score}")    
-        else:
-            print('FULL')
-            print(self.score)
-            print(roll_dice_num)
-            self.score += roll_dice_num
-            
-            print(f"2..............Check player method {self.score}")
-            
-          
+        if roll_dice_num == 1:  # When the player rolled 1
+            self.tempscore = 0 
+        elif roll_dice_num == 0: # When the player selected to hold            
+            self.score = self.tempscore
+            self.tempscore = 0
+        else: # When the player rolled 2 to 6
+            self.tempscore += roll_dice_num
+            if self.tempscore + self.score >=30:
+                self.score += self.tempscore
     
     def won(self):
         self.wins += 1
