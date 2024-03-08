@@ -1,18 +1,8 @@
-# Game Rules 
-# Who will roll first
 
-# # check if the player exist 
-# shuld handle player switch
-
-import dice
-import player
-import computer
 import random
 
 class Game:
     
-    def __init__(self):
-        pass 
                  
     def roll_first(self, p1_name, p2_name):
         a = random.choice(['Heads', 'Tails'])
@@ -50,4 +40,14 @@ class Game:
         print("-" * 100)
         
     
-        
+    def roll_or_hold(self, my_dice, roll):
+        if roll.lower() == 'r':
+            value = my_dice.roll()
+            return value
+        elif roll.lower() == 'h':
+            print("\n Another player turn.\n")
+            return 0
+        elif roll.lower() == 'q':
+            print("Restarting the Game.")
+            return 2000
+

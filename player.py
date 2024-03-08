@@ -16,7 +16,7 @@ class Player:
             self.tempscore = 0
         else:   # When the player rolled 2 to 6
             self.tempscore += roll_dice_num
-            if self.tempscore + self.score > 30:
+            if self.tempscore + self.score > 100:
                 self.score += self.tempscore
     
     def won(self):
