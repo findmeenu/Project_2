@@ -10,7 +10,7 @@ def game_rules():
         print("-> If the player rolls a 1, they score nothing and it becomes the next player's turn.")
         print("-> If the player rolls any other number, it is added to their turn total and the player's turn continues.")
         print("-> If a player chooses to \"hold\", their turn total is added to their score, and it becomes the next player's turn. \n")
-        print ("The first player to score more than 100 points wins.")
+        print ("The first player to score '100 or more' points wins.")
         time.sleep(1)
         os.system("cls")
         
@@ -26,7 +26,7 @@ def main_menu():
 def robot_level():
     print("You would be facing Mr. Robot.")
     print("Select the difficulty level of Mr. Robot. ")
-    print("\n1. EASY \n 2.HARD\n")
+    print("\n1. EASY \n 2. HARD\n")
 
 def sub_menu_1():
     print("\n1. New Player")

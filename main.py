@@ -79,30 +79,26 @@ def main():
                                 value = hold_or_roll(my_dice, pig_game)
                                 
                             elif current_player == p2_instance:
-                               
-                                print("11111111111-----cut no roll here")
-                               
-                                #current_player.score1(value)
+                                
                                 value = p2_instance.hold_or_roll_comp(
                                         my_dice, difficulty_level)    
-                                print("2222222222222222222")
-                                print(value)
+                                
                             current_player.score1(value)
                             
                             print("-------------------------------Score----------------")
                             if value == 1: #Switch because of dice rolled 1
-                                play_logic(pig_game, current_player, p1_instance, p2_instance)
+                                current_player = play_logic(pig_game, current_player, p1_instance, p2_instance)
                                 
                                         
                             elif value == 0:   #Switch because of user selected to hold
-                                play_logic(pig_game, current_player, p1_instance, p2_instance)
+                                current_player = play_logic(pig_game, current_player, p1_instance, p2_instance)
                             
                             elif value == 2000:  # When player want to restart & press 'Q/q'
                                 start_playing = False
                                 play = True    
                                     
                             else: #When either of the player has reached roll value 100
-                                if p1_instance.score > 30:
+                                if p1_instance.score > 100:
                                     print(f"{p1_instance.name} is the WINNER !.")
                                     p1_instance.won()
                                     my_history.addPlayer(p1_instance)
@@ -110,7 +106,7 @@ def main():
                                     start_playing = False
                                     play = True
                                     
-                                elif p2_instance.score > 30:
+                                elif p2_instance.score > 100:
                                     
                                     print(f"{p2_instance.name} is the WINNER !.")
                                     p1_instance.lost()
@@ -150,18 +146,18 @@ def main():
                             
                             print("-------------------------------Score----------------")
                             if value == 1: # Switch because of dice rolled 1
-                                play_logic(pig_game, current_player, p1_instance, p2_instance)
+                                current_player = play_logic(pig_game, current_player, p1_instance, p2_instance)
                                         
                             elif value == 0:   #Switch because of user selected to hold
                             
-                                play_logic(pig_game, current_player, p1_instance, p2_instance)
+                                current_player = play_logic(pig_game, current_player, p1_instance, p2_instance)
                             
                             elif value == 2000:  # When player want to restart & press 'Q/q'
                                 start_playing = False
                                 play = True    
                                     
                             else: #When either of the player has reached roll value 100
-                                if p1_instance.score > 30:
+                                if p1_instance.score > 100:
                                     print(f"{p1_instance.name} is the WINNER !.")
                                     p1_instance.won()
                                     p2_instance.lost()
@@ -171,7 +167,7 @@ def main():
                                     start_playing = False
                                     play = True
                                     
-                                elif p2_instance.score > 30:
+                                elif p2_instance.score > 100:
                                     
                                     print(f"{p2_instance.name} is the WINNER !.")
                                     p1_instance.lost()
@@ -266,6 +262,7 @@ def play_logic(pig_game, current_player, p1_instance, p2_instance):
         current_player, p1_instance, p2_instance)
     
     pig_game.print_current_player(current_player)
+    return current_player
 
 if __name__ == "__main__":
     main()                   

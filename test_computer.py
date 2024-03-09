@@ -127,7 +127,34 @@ class TestComputerClass(unittest.TestCase):
         result = self.comp.hold_or_roll_comp(self.die, 1)
         
         # Assert that the value returned by hold_or_roll_comp is equal to the value = 0
-        self.assertEqual(result, 0)    
+        self.comp.score1(result)
+        self.assertIn(result, [self.comp.tempscore, 1])
+        
+        self.comp.strategy = MagicMock(return_value='h')
+        result = self.comp.hold_or_roll_comp(self.die, 1)
+        
+        # Assert that the value returned by hold_or_roll_comp is equal to the value = 0
+        self.assertEqual(result, 0)
+        
+        
+        
+    def test_hold_or_roll_comp3(self):
+        # Define a mock value for the strategy method & checking that whenever player switches Mr. Robot always roll first
+        # then behave according to strategy.
+        self.comp.counter = 0
+        self.comp.strategy = MagicMock(return_value='h') # Mocked strategy to hold.
+        
+        self.die.roll = MagicMock(return_value=3)  # Mocked the value returned from rolling dice on Mr. Robot turn.
+        # Call the hold_or_roll_comp method with the mock die instance and difficulty level
+        result = self.comp.hold_or_roll_comp(self.die, 1)
+        self.assertEqual(result, 3)
+        
+        result = self.comp.hold_or_roll_comp(self.die, 1)
+        self.comp.score1(result)
+        self.assertIn(result, [self.comp.tempscore, 1])
+        
+        # Assert that the value returned by hold_or_roll_comp is equal to the value = 3
+             
                 
 if __name__ == '__main__':
     unittest.main()
