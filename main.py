@@ -149,7 +149,7 @@ def main():
                             current_player.score1(value)
                             
                             print("-------------------------------Score----------------")
-                            if value == 1: #Switch because of dice rolled 1
+                            if value == 1: # Switch because of dice rolled 1
                                 play_logic(pig_game, current_player, p1_instance, p2_instance)
                                         
                             elif value == 0:   #Switch because of user selected to hold
